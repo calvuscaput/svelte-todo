@@ -76,6 +76,50 @@
   }
 </script>
 
+<style>
+    .container {
+        max-width: 800px;
+        margin: 10px auto;
+    }
+    .logo {
+        display: block;
+        margin: 20px auto;
+        width: 50%;
+    }
+    .todo-input {
+        width: 100%;
+        padding: 10px, 20px;
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+    .inner-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 16px;
+        border-top: 1px solid lightgrey;
+        padding-top: 15px;
+        margin-bottom: 13px;
+    }
+    .inner-container-input {
+        margin-right: 12px;
+    }
+    button {
+        font-size: 14px;
+        background-color: white;
+        appearance: none;
+    }
+    button:hover {
+        background: lightseagreen;
+    }
+    button:focus {
+        outline: none;
+    }
+    .active {
+        background: lightseagreen;
+    }
+</style>
+
 <div class="container">
   <img src={'http://place-puppy.com/200x200'} alt="Todo list">
   <h2>Svelte Todo App</h2>
