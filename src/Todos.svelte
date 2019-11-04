@@ -121,7 +121,7 @@
 </style>
 
 <div class="container">
-  <img src={'http://place-puppy.com/200x200'} alt="Todo list">
+  <img class="logo" src={'http://place-puppy.com/200x200'} alt="Todo list">
   <h2>Svelte Todo App</h2>
   <input 
     type="text"
