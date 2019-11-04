@@ -44,6 +44,12 @@
     : currentFilter === 'completed'
       ? todos.filter(todo => todo.completed)
       :todos.filter(todo => !todo.completed)
+
+  function checkAllTodos(event) {
+    todos.forEach(todo => todo.completed = event.target.checked)
+    todos = todos;
+  }
+
   
 </script>
 
