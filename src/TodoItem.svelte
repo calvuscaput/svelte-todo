@@ -9,14 +9,17 @@
   const dispatch = createEventDispatcher();
 
   function deleteTodo() {
-    dispatch('delteTodo', {
-      id: id
-    });
+    dispatchEvent('deleteTodo')
   }
 
   function toggleComplete() {
-    dispatch('toggleComplete', {
-      id: id
+    dispatchEvent('toggleComplete')
+  }
+
+// функция возвращает нужный еvent и передает наверх id
+  function dispatchEvent(event) {
+    dispatch(event, {
+      id
     })
   }
 </script>

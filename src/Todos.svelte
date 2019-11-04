@@ -23,6 +23,13 @@
     }
   ];
 
+  $: todosRemaining = filteredTodos.filter(todo => !todo.completed).length;
+  $: filteredTodos = currentFilter === 'all' 
+    ? todos 
+    : currentFilter === 'completed'
+      ? todos.filter(todo => todo.completed)
+      :todos.filter(todo => !todo.completed)
+
   function addTodo(event) {
     if (event.key === 'Enter') {
       todos = [
@@ -33,21 +40,17 @@
           title: newTodoTitle
         }
       ];
-      nextId = nextId + 1;
+      nextId++;
       newTodoTitle = '';
     }
   }
 
-  $: todosRemaining = filteredTodos.filter(todo => !todo.completed).length;
-  $: filteredTodos = currentFilter === 'all' 
-    ? todos 
-    : currentFilter === 'completed'
-      ? todos.filter(todo => todo.completed)
-      :todos.filter(todo => !todo.completed)
 
   function checkAllTodos(event) {
-    todos.forEach(todo => todo.completed = event.target.checked);
-    todos = todos;
+    todos = todos.map(todo => ({
+      ...todo,
+      completed: event.target.checked
+    }))
   }
 
   function updateFilter(newFilter) {
@@ -63,16 +66,13 @@
   }
 
   function handleToggleComplete(event) {
-    const todoIndex = todos.findIndex(todo => todo.id === event.detail.id);
-    const updatedTodo = {
-      ...todos[todoIndex],
-      completed: !todos[todoIndex].completed
-      };
-    todos = [
-      ...todos.slice(0, todoIndex),
-      updatedTodo,
-      ...todos.slice(todoIndex + 1)
-    ];
+    todos = todos.map(todo => {
+      if (todo.id !== event.detail.id) return todo
+      return {
+        ...todo,
+        completed: !todo.completed
+      }
+    })
   }
 </script>
 
