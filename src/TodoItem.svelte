@@ -64,7 +64,7 @@
       on:change={toggleComplete}
     >
     <div
-      class="todo-item--label"
+      class="todo-item-label"
       class:completed={completed}
     >
       {title}
